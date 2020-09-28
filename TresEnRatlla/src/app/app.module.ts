@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TaulellComponent } from './taulell/taulell.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TaulellComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
