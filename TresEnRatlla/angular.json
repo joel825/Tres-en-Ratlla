@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "TresEnRatlla"
+    }
+  },
+  "defaultProject": "TresEnRatlla",
+  "cli": {
+    "analytics": false
+  }
 }
