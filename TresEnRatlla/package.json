@@ -23,7 +23,7 @@
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "@popperjs/core": "^2.4.4",
     "bootstrap": "^4.5.2",
-    "firebase": "^7.21.1",
+    "firebase": "^7.22.0",
     "jquery": "^3.5.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
