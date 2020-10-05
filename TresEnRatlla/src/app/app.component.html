@@ -1,8 +1,11 @@
-<img src="assets/img/logo.png" width="70px" height="70px" style="margin-left: 10px; margin-top: 10px;">
+<div>
+    <img src="assets/img/logo.png" width="70px" height="70px" style="margin-left: 10px; margin-top: 10px; position: fixed;">
+    <button (click)="doLogout()" style="margin-left: 90%; margin-top: 2%;" class="btn btn-info">Log Out</button>
+</div>
 
 <div style="text-align: center; margin-top: 3em;" >
-    <app-login-button></app-login-button>
-    <app-taulell *ngIf="false"></app-taulell>
+    <app-login-button *ngIf="!taulell"></app-login-button>
+    <app-taulell *ngIf="taulell"></app-taulell>
 </div>
 
 <div>

@@ -8,6 +8,7 @@ import { FireServiceService } from './fire-service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  taulell: boolean = false;
 
   constructor(public fireService: FireServiceService){
     this.fireService.afAuth.authState.subscribe(
@@ -17,6 +18,7 @@ export class AppComponent {
         }
         else{
           console.log('Successfully Logged in.');
+          this.taulell = true;
         }
       }
     )
@@ -24,6 +26,7 @@ export class AppComponent {
   
   doLogout() {
     console.log('Logout');
+    this.taulell = false;
     this.fireService.logout();
   }
 }
