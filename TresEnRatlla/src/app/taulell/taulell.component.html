@@ -1,7 +1,13 @@
 <div *ngIf="!partidaAcabada" style="text-align: center;">
     <h2>Torn del jugador "{{torn}}"</h2> 
 </div>
-<div *ngIf="!partidaAcabada" class="buttons">
+<div *ngIf="partidaAcabada" style="text-align: center;">
+    <h2>Ha gunyat el jugador "{{torn}}"</h2> 
+</div>
+<div>
+    <button type="button" class="btn btn-warning" *ngIf="partidaAcabada" (click)="playAgain()">Tornar a Jugar</button>
+</div>
+<div class="buttons">
     <button type="button" class="btn btn-outline-light btn-xlarge" id="Btn1" (click)="buttonClicked(1)"></button>
     <button type="button" class="btn btn-outline-light btn-xlarge" id="Btn2" (click)="buttonClicked(2)"></button>
     <button type="button" class="btn btn-outline-light btn-xlarge" id="Btn3" (click)="buttonClicked(3)"></button>
@@ -14,6 +20,4 @@
     <button type="button" class="btn btn-outline-light btn-xlarge" id="Btn8" (click)="buttonClicked(8)"></button>
     <button type="button" class="btn btn-outline-light btn-xlarge" id="Btn9" (click)="buttonClicked(9)"></button>
 </div>
-<div>
-    <button type="button" class="btn btn-warning" *ngIf="partidaAcabada" (click)="playAgain()">Tornar a Jugar</button>
-</div>
+

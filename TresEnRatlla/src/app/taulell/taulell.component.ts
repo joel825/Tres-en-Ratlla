@@ -1,5 +1,4 @@
-import { EMPTY_PARSE_LOCATION } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-taulell',
@@ -15,7 +14,7 @@ export class TaulellComponent {
 
   buttonClicked(button) {
     
-    if (this.torn == 'X' && document.getElementById('Btn' + button).textContent == "") {
+    if (this.torn == 'X' && document.getElementById('Btn' + button).textContent == "" && !this.partidaAcabada) {
       
       document.getElementById('Btn' + button).textContent = 'X';
       this.comprovarTaulell();
@@ -24,6 +23,7 @@ export class TaulellComponent {
         this.comprovarTaulell();
       }
       this.torn = 'X';
+      
     } /*else if(this.torn == 'O' && document.getElementById('Btn' + button).textContent == "") {
       document.getElementById('Btn' + button).textContent = 'O';
     }*/
@@ -67,6 +67,7 @@ export class TaulellComponent {
       window.alert("EMPAT");
       this.partidaAcabada = true;
     }
+  }
     
 /*
     if (this.torn == 'X' && document.getElementById('Btn' + button).textContent == "X") {
@@ -76,7 +77,7 @@ export class TaulellComponent {
     } 
      */
     
-  }
+  
 
   empat(){
     return document.getElementById('Btn1').textContent != '' && 
@@ -105,6 +106,10 @@ export class TaulellComponent {
   }
   playAgain(){
     this.partidaAcabada = false;
+    for (let index = 1; index <= 9; index++) {
+      document.getElementById('Btn' + index).textContent = '';
+      
+    }
   }
   inteligenciaIA(){
 
