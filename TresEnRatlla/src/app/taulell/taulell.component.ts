@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FireServiceService } from '../fire-service.service';
 
 @Component({
   selector: 'app-taulell',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 export class TaulellComponent {
   torn: string = 'X';
   partidaAcabada: boolean = false;
-  constructor() { }
+  constructor(public fire: FireServiceService) { }
 
   
 
@@ -66,6 +67,14 @@ export class TaulellComponent {
     } else if (this.empat()) {
       window.alert("EMPAT");
       this.partidaAcabada = true;
+    }
+    if (this.partidaAcabada) {
+      
+      this.fire.afAuth.authState.subscribe(
+        (auth) => {
+          console.log(auth.displayName);
+        })
+      
     }
   }
     

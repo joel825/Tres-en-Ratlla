@@ -1,0 +1,24 @@
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1.text{
+          text-align: center
+  
+      }
+      table {
+      border-collapse: collapse;
+      width: 70%;
+      margin-left:auto; 
+      margin-right:auto;
+  }
+  th {
+      white-space: nowrap;
+  }
+  
+  td, th {
+      padding: 1em 1.5em;
+      text-align: center;
+      
+  }
