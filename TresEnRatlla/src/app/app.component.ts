@@ -31,3 +31,16 @@ export class AppComponent {
   }
 }
 
+export class Jugador {
+  nom: String;
+  punts: Number;
+  email: String;
+
+  constructor(nom: String, punts: Number, email: String){
+    this.nom = nom;
+    this.punts = punts;
+    this.email = email;
+  }
+  
+  
+}

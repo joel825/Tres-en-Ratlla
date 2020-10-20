@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as firebase from 'firebase';
+import { Jugador } from '../app.component';
 import { FireServiceService } from '../fire-service.service';
 
 @Component({
@@ -64,17 +66,17 @@ export class TaulellComponent {
     } else if (document.getElementById('Btn3').textContent == this.torn && document.getElementById('Btn5').textContent == this.torn && document.getElementById('Btn7').textContent == this.torn) {
       window.alert(this.torn + " win");
       this.partidaAcabada = true;
-    } else if (this.empat()) {
+    } else if (this.empat()){
       window.alert("EMPAT");
       this.partidaAcabada = true;
     }
+
     if (this.partidaAcabada) {
-      
-      this.fire.afAuth.authState.subscribe(
-        (auth) => {
-          console.log(auth.displayName);
-        })
-      
+        this.fire.afAuth.user.subscribe((data) => {
+          data.email
+          data.displayName
+        });
+        firebase.database().ref("Jugadors").push(new Jugador("Joel", 1, "123"));
     }
   }
     
