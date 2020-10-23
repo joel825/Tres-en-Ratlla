@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import * as firebase from 'firebase';
 import { Jugador } from '../app.component';
 import { FireServiceService } from '../fire-service.service';
+import {AngularFireModule} from '@angular/fire';
 
 @Component({
   selector: 'app-taulell',
@@ -16,7 +17,6 @@ export class TaulellComponent {
   
 
   buttonClicked(button) {
-    
     if (this.torn == 'X' && document.getElementById('Btn' + button).textContent == "" && !this.partidaAcabada) {
       
       document.getElementById('Btn' + button).textContent = 'X';
@@ -24,6 +24,7 @@ export class TaulellComponent {
       if (!this.partidaAcabada) {
         this.tornMaquina();
         this.comprovarTaulell();
+        
       }
       this.torn = 'X';
       
@@ -72,11 +73,31 @@ export class TaulellComponent {
     }
 
     if (this.partidaAcabada) {
-        this.fire.afAuth.user.subscribe((data) => {
-          data.email
-          data.displayName
-        });
-        firebase.database().ref("Jugadors").push(new Jugador("Joel", 1, "123"));
+      var ref = firebase.database();
+      this.fire.afAuth.user.subscribe((auth) =>{
+       
+        ref.ref("/Jugadors/" + auth.uid).on('value',function(e){
+          if (e.exists()) {
+            //Augmentar
+            console.log(e.val().punts);
+          } else {
+            let email = auth.email;
+            let name = auth.displayName;
+            ref.ref("/Jugadors/" + auth.uid).push(new Jugador(name, 1, email));
+          }
+          console.log(e.exists());
+        })
+      })
+      
+      
+      //firebase.database().ref('Jugadors/' ).set(
+
+        /*this.fire.afAuth.user.subscribe((data) => {
+          console.log(data.displayName)
+          console.log(firebase.database().ref("/ranking"));
+          
+        });*/
+        
     }
   }
     
