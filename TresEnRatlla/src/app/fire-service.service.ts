@@ -31,4 +31,26 @@ export class FireServiceService {
   logout() {
     return this.afAuth.signOut();
   }
+
+  actualitzarPunts(){
+    var ref = firebase.database();
+      this.afAuth.user.subscribe((auth) =>{
+        ref.ref("/Jugadors/" + auth.uid).once('value',function(e){
+          if (e.exists()) {
+            //Augmentar
+            let puntsActualitzats = e.val().punts + 1;
+            ref.ref("/Jugadors/" + auth.uid).update({punts: puntsActualitzats});
+            console.log(e.val());
+
+          } else {
+            let email = auth.email;
+            let name = auth.displayName;
+            ref.ref("/Jugadors/" + auth.uid).set({email: email,
+                                                  name: name,
+                                                  punts: 1});
+          }
+          console.log(e.exists());
+        })
+      })
+  }
 }
